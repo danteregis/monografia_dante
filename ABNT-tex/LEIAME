@@ -1,0 +1,8 @@
+Para instalar o ABNT-tex no seu computador use:
+
+rpm -Uvh abntex*.rpm
+
+Para compilar a monografia e gerar o arquivo "monografia.pdf":
+
+$ make
+
