@@ -15,8 +15,8 @@
 %\usepackage{psfrag}
 %\usepackage[center]{caption2}
 
-\documentclass[normaltoc,capchap,capsec,times,espaco=umemeio]{abnt}
-\usepackage[latin1]{inputenc}
+\documentclass[normaltoc,times,espaco=umemeio]{abnt}
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
 \usepackage[alf]{abntcite}
@@ -30,11 +30,10 @@
 \usepackage{framed}
 
 \begin{document}
-%\include{capa}
-
-%\include{identificacao}
-%\include{tema}
-%\include{delimitacao}
+\include{capa}
+\include{identificacao}
+\include{tema}
+\include{delimitacao}
 \include{problema}
-\include{bibliografia}
+\bibliography{biblio}
 \end{document}
