@@ -6,17 +6,8 @@
 %% Copyright (c) Dante Siqueira Regis
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\documentclass[dvips,ruledheader,espaco=umemeio]{abnt}
-%\usepackage[brazil]{babel}
-%\usepackage[utf8x]{inputenc}
-%\usepackage[dvips]{graphicx}
-%\usepackage{abnt-alf}
-%\usepackage{latexsym}
-%\usepackage{psfrag}
-%\usepackage[center]{caption2}
-
-\documentclass[normaltoc,capchap,capsec,times,espaco=umemeio]{abnt}
-\usepackage[latin1]{inputenc}
+\documentclass[normaltoc,times,espaco=umemeio]{abnt}
+\usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
 \usepackage[alf]{abntcite}
@@ -28,13 +19,21 @@
 \usepackage{subfigure}
 \usepackage{multicol}
 \usepackage{framed}
+\usepackage{rotating}
 
 \begin{document}
-%\include{capa}
-
-%\include{identificacao}
-%\include{tema}
-%\include{delimitacao}
+\include{capa}
+\include{identificacao}
+\include{tema}
+\include{delimitacao}
 \include{problema}
-\include{bibliografia}
+\include{objetivos}
+\include{hipoteses}
+\include{variaveis}
+\include{marcoteorico}
+\include{justificativa}
+\include{metodologia}
+\include{cronograma}
+\bibliography{biblio}
+\include{propostasumario}
 \end{document}
