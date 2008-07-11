@@ -5,6 +5,8 @@ all:
 	pdflatex projeto
 pdf:
 	pdflatex projeto
+	pdflatex projeto
+	pdflatex projeto
 	bibtex projeto
 	pdflatex projeto
 	evince projeto.pdf
