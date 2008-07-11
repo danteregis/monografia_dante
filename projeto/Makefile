@@ -5,6 +5,9 @@ all:
 	pdflatex projeto
 pdf:
 	pdflatex projeto
+	bibtex projeto
+	pdflatex projeto
+	evince projeto.pdf
 clean:
 	rm -f *.aux *.log *.blg *.bbl *.dvi *.ps *.pdf *.toc *.lot *.lof *.siglax *.symbolsx
 
