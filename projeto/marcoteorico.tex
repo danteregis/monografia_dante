@@ -48,13 +48,21 @@
   receptor deveriam combinar entre si, de alguma forma, qual
   seria a chave utilizada.\par
 
-  Os algorítimos criptográficos modernos são muito mais
-  sofisticados do que os da época de César, e podem ser
-  classificados em várias categorias. Para o escopo deste
-  trabalho, devemos nos ater aos algorítimos de chave
-  assimétrica, que são os utilizados no certificado digital.\par
+  Vários são os tipos e implementações modernas de algorítimos
+  criptográficos. Para o escopo deste trabalho, devemos nos ater aos 
+  de chave assimétrica, mais precisamente no algorítimo RSA,
+  utilizado no certificado digital.\par
 
-  Esse tipo de algorítimo surgiu em 1976
+  Este algorítimo surgiu em 1977, e utiliza o princípio de chaves
+  públicas e privadas. Para enviar uma mensagem criptografada
+  para o indivíduo \emph{A}, o indivíduo \emph{B} utilizará a
+  chave pública de \emph{A}. Esta chave, como o nome esclarece, é
+  de conhecimento amplo, e pode ser livremente divulgada. Para
+  ler a mensagem, no entanto, não se utilizará a mesma chave que
+  criptografou o texto, mas uma diferente, denominada chave
+  privada. Somente \emph{A}, possuidor da chave privada
+  correspondente à chave pública utilizada por \emph{B} poderá
+  ler o texto \cite[p. 443]{SistemasOperacionaisModernos}. \par
   
 
 
