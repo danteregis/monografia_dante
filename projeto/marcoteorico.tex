@@ -63,82 +63,81 @@
   criptografou o texto, mas uma diferente, denominada chave
   privada. Somente \emph{A}, possuidor da chave privada
   correspondente à chave pública utilizada por \emph{B} poderá
-  ler o texto \cite[p. 443]{SistemasOperacionaisModernos}. \par
-  
+  ler o texto \cite[p. 443]{SistemasOperacionaisModernos}. Esse
+  método criptográfico de nada valeria para confirmar a
+  identidade do autor de um documento se não fosse por uma
+  característica do algorítimo RSA: o contrário também é
+  verdadeiro. Um documento criptografado pela chave
+  \emph{privada} de \emph{A}, conhecida apenas por este, só
+  poderá ser descriptografado pela chave pública correspondente.
+  Ou seja, se um determinado documento for legível após o uso da
+  chave pública de \emph{A}, então é certo que foi criptografado
+  por ele.\par
 
+  O certificado digital e, paralelamente, a assinatura digital,
+  utilizam conceito similar ao exposto. Como a chave pública de
+  um indivíduo não tem restrições de divulgação, posto que não é
+  possível descriptografar os documentos com ela criptografados,
+  foram montadas estruturas para armazenar várias dessas chaves
+  públicas em um único local, associando-as a determinadas
+  pessoas. Um indivíduo poderia se cadastrar na empresa
+  mantenedora dessa estrutura e armazenar lá a sua chave pública.
+  Dessa forma, torna-se extremamente prático enviar arquivos
+  criptografados para qualquer pessoa cadastrada em uma dessas
+  empresas, que são chamadas de Autoridades Certificadoras. Ao
+  efetuar esse cadastro junto às autoridades certificadoras, o
+  indivíduo recebe um certificado digital, que contém sua chave
+  privada, de conhecimento unicamente seu. A chave pública, em
+  contra-partida, fica armazenada nos servidores da Autoridade
+  Certificadora \cite[p. 16]{SegredoDemocracia}.
 
-	Sobre o tema deste projeto de monografia, ainda não foram
-  encontrados autores que o abordassem diretamente, mas apenas
-  textos sobre aspectos importantes do tema, como a validade
-  jurídica da assinatura digital, por exemplo.\par
-	
-	Em artigo publicado em 2006, Gustavo Binenbojm discute a
-  eficácia da divulgação de atos do Poder Público via Internet em
-  face do princípio da Publicidade Administrativa. Segundo seu
-  entendimento, a substituição feita pelo INPI – Instituto
-  Nacional da Propriedade Intelectual – de sua revista impressa
-  pela versão eletrônica fere o citado princípio por várias
-  razões. Alega o autor que a Constituição Federal, ao instituir
-  o princípio da Publicidade em seu art. 37 caput, determinou aos
-  agentes públicos a adoção, de forma progressiva, dos
-  comportamentos necessários à disseminação de seus atos tendente
-  a atingir o maior grau possível de difusão e conhecimento por
-  parte da população. \par
-	
-	Vedar a publicação impressa teria, portanto, afrontado esse
-  mandado constitucional, convertendo-o, de um mandado de
-  otimização, conforme ensina Robert Alexy, para, nas palavras do
-  autor, um mandado de pessimização, por restringir o alcance da
-  publicação anteriormente existente.  No entendimento do autor,
-  com o péssimo grau de inclusão digital existente em nosso país,
-  onde 79\% dos habitantes nunca manuseou um computador e 89\%
-  nunca acessou a internet, a supressão da da edição impressa da
-  revista em nada contribui para a publicidade dos atos
-  administrativos que passam a ser disponíveis apenas em forma
-  eletrônica. \par
-	
-	Discorrendo sobre o Certificado Digital e seu uso nos
-  documentos eletrônicos, Angelo Boreggio Neto e Gustavo Nahasan
-  apresentam um breve histórico sobre a regulamentação da
-  certificação digital na legislação internacional, incluindo o
-  projeto Clipper, que estabelecia uma forma de criptografia
-  especial, permitindo ao governo dos Estados Unidos ler qualquer
-  mensagem que utilizasse esse sistema, o Digital Signature Act
-  of Utah, primeira regulamentação legal no mundo acerca da
-  certificação digital, e a Lei Modelo do Comércio Eletrônico
-  (Resolução da Assembléia Geral da ONU no. 51/162 de 1996) que
-  estabelecia requisitos para que o documento digital tenha
-  função equivalente ao escrito. \par
-	
-	Segundo os autores, o documento digital é uma representação da
-  realidade, seja textual gráfica ou sonora, que, normalmente, é
-  volátil e de fácil alteração e falsificação. No entanto,
-  através de mecanismos informáticos, como a certificação
-  digital, que sana uma imperfeição ínsita das comunicações
-  veiculadas no meio digital: a incerteza quanto à identidade, é
-  possível que adquiram as três características fundamentais de
-  um documento em papel: a integridade, a autenticidade e a
-  tempestividade, e assim possam servir às três funções dos
-  documentos: identificativa, declaratória e probatória. \par
+  Já a assinatura digital decorre de uma consequência indesejável
+  da complexidade do algorítimo RSA: baixa velocidade
+  \cite{ComputerNetworks}. A solução encontrada foi, ao invés de
+  criptografar o documento por inteiro, utilizar-se de uma função
+  de hash \textbf{(EXPLICAR HASH)}, que gera uma espécie de
+  resumo criptográfico do arquivo. Apenas este resumo seria
+  criptografado com a chave privada do remetente, garantindo
+  assim velocidade no procedimento de assinatura do documento e
+  garantindo um grau de confiabilidade
+  aceitável \cite{ComputerNetworks}. Um documento que tenha
+  passado por esse processo estaria assinado digitalmente pelo
+  autor e não poderia ser alterado sem que fosse notado pelo
+  receptor. Tendo em vista essa propriedade da assinatura
+  digital, em 1996 foi aprovada pela Assembléia Geral da ONU a
+  \emph{Lei Modelo do Comércio
+  Eletrônico}, que estabeleceu requisitos para que o documento
+  digital tenha função equivalente ao escrito
+  \apud{LeiModeloComercioEletronico}{CertificadoDigital}.
+
+	Segundo \citeonline{CertificadoDigital}, o documento digital é
+  uma representação da realidade, seja textual gráfica ou sonora,
+  que, normalmente, é volátil e de fácil alteração e
+  falsificação. No entanto, através de mecanismos informáticos,
+  como a já expicada certificação digital, é possível que
+  adquiram as três características fundamentais de um documento
+  em papel: a integridade, a autenticidade e a tempestividade, e
+  assim possam servir às três funções dos documentos:
+  identificativa, declaratória e probatória. \par
 	
 	No documento em papel, a integridade é verificada pela
   existência ou não de contrafação – rasura, escritos
   posteriores. No documento digital, a assinatura digital é
   inexoravelmente violada com qualquer mínima alteração no
-  conteúdo do documento.\par
+  conteúdo do documento \cite{CertificadoDigital}.\par
 	
 	A identificação do autor pode ser realizada através de
   autoridades certificadoras, como a ICP-BRASIL, instituída pela
-  Medida Provisória 2.200, que armazenam certificados para
+  Medida Provisória 2.200 \cite{MedProv2200}, que armazenam certificados para
   aferição de autenticidade das assinaturas digitais. \par
 	
-	Defendem os autores que a validade do documento eletrônico em
-  si, apenas por ser eletrônico, não deve ser questionada.
-  Afinal, se a lei permite a existência de contratos verbais, por
-  exemplo, não há porque negar validade aos contratos
-  eletrônicos. Ainda segundo os autores, a volatilidade
-  característica do meio eletrônico, que faz algumas pessoas
-  manterem receio quanto a esses documentos é sanada pelo
+	Defendem \citeonline{CertificadoDigital} que a validade do
+  documento eletrônico em si, apenas por ser eletrônico, não deve
+  ser questionada.  Afinal, se a lei permite a existência de
+  contratos verbais, por exemplo, não há porque negar validade
+  aos contratos eletrônicos. Ainda segundo os autores, a
+  volatilidade característica do meio eletrônico, que faz algumas
+  pessoas manterem receio quanto a esses documentos é sanada pelo
   certificado digital. Justificam ainda o uso do documento
   eletrônico como meio de prova com fundamento no art. 322 do
   CPC, que determina serem todos os meios legais e moralmente
@@ -147,7 +146,7 @@
   em que a lei impõe determinada forma ao negócio jurídico que
   não é suportada pelos meios eletrônicos. \par
 	
-	Concluem os autores que a falta de regulamentação e de
+	Concluem \citeonline{CertificadoDigital} que a falta de regulamentação e de
   atribuição de validade jurídica aos documentos digitais
   representavam empecilhos ao desenvolvimento do comércio
   eletrônico. O entendimento mais correto é o de dar validade aos
@@ -157,6 +156,35 @@
   sem o seu consentimento, assim como o destinatário poderá
   confiar na procedência e integridade da mensagem, assim como
   pode saber que foi enviado exatamente na hora indicada. \par
+
+	
+	Em relação à divulgação de atos do Poder Público via Internet,
+  importante para o trabalho em virtude da existência de Diários
+  da Justiça Eletrônicos e Intimações virtuais,
+  \citeonline{PublicidadeINPI} discute-a em face do princípio da
+  Publicidade Administrativa.  Segundo seu entendimento, a
+  substituição feita pelo INPI – Instituto Nacional da
+  Propriedade Intelectual – de sua revista impressa pela versão
+  eletrônica fere o citado princípio por várias razões. Alega o
+  autor que a Constituição Federal, ao instituir o princípio da
+  Publicidade em seu art. 37 caput, determinou aos agentes
+  públicos a adoção, de forma progressiva, dos comportamentos
+  necessários à disseminação de seus atos tendente a atingir o
+  maior grau possível de difusão e conhecimento por parte da
+  população. \par
+	
+	Vedar a publicação impressa teria, portanto, afrontado esse
+  mandado constitucional, convertendo-o, de um mandado de
+  otimização, para, segundo \citeonline{PublicidadeINPI}, um mandado de pessimização, por restringir o alcance da
+  publicação anteriormente existente.  Ainda segundo o entendimento do autor,
+  com o péssimo grau de inclusão digital existente em nosso país,
+  onde 79\% dos habitantes nunca manuseou um computador e 89\%
+  nunca acessou a internet
+  \apud{PesquisaInclusaoDigital}{PublicidadeINPI}, a supressão da da edição impressa da
+  revista em nada contribui para a publicidade dos atos
+  administrativos que passam a ser disponíveis apenas em forma
+  eletrônica. \par
+	
 	
 	Em seu artigo “A Informatização do Processo Judicial – da 'Lei
   do Fax' à Lei nº 11.419/2006: uma Breve Retrospectiva
