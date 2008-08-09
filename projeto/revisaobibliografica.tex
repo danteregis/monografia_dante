@@ -1,0 +1,244 @@
+\chapter{Revisão de Bibliográfica}
+
+  A monografia de que trata este projeto tem por característica a
+  análise de duas áreas do conhecimento humano: o Direito e a
+  Ciência da Computação. Em virtude das peculiaridades do tema,
+  serão nos autores nas construções teóricas dessas duas ciências
+  que se irá buscar a solução para o problema proposto.\par
+
+  Para se discutir a validade jurídica das peças processuais
+  virtuais não assinadas digitalmente, é necessário,
+  inicialmente, verificar o conceito de documento eletrônico e de
+  assinatura digital.\par
+
+  Via de regra, é possível determinar se um documento físico é
+  autêntico pela assinatura do autor. Observa-se sua caligrafia,
+  a tinta utilizada e eventuais marcas em alto-relevo. Um perito
+  pode fazer análise grafotécnica para determinar se a caligrafia
+  do texto é a mesma do autor ou se existem adulterações no texto
+  original. Não é possível utilizar nenhum desses métodos para
+  documentos digitais \cite{ComputerNetworks, CertificadoDigital}.\par
+
+  Em relação a estes, a Ciência da Computação desenvolveu métodos
+  de verificação da autenticidade e integridade da informação.
+  Todos esses métodos estão relacionados de alguma forma à
+  técnica da criptografia, conforme afirma
+  \citeonline[p. 555]{ComputerNetworks}.\par
+
+  O termo criptografia vem da expressão grega para "escrita
+  secreta". A técnica é bastante antiga: um dos exemplos mais
+  remotos de sua aplicação é o do exército romano na época de
+  César, que deu origem à Cifra de César \cite[p.
+  555]{ComputerNetworks}.\par
+
+  Na utilização dessa técnica, um texto, produzido pelo emissor da
+  mensagem, passa por um programa de computador que, através de
+  processos matemáticos e de lógica, transforma-o em um conjunto de
+  caracteres ininteligíveis, a que se chama de mensagem ou texto
+  cifrado.  Esta é a mensagem que é transmitida ou gravada. Para
+  a leitura dessa mensagem, é necessário que a mesma passe
+  novamente por um processo lógico-matemático que transformará o
+  texto cifrado novamente no original. A esse conjunto de
+  operações pelas quais passa o texto, dá-se o nome de
+  algorítimo \cite{ComputerNetworks}. Para evitar que apenas o
+  conhecimento do algorítimo permita a um estranho ler a
+  mensagem, muitos desses procedimentos lógicos passaram a adotar
+  a "chave" criptográfica, sem a qual não se poderia ler a
+  mensagem original. Para a transmissão do texto, remetente e
+  receptor deveriam combinar entre si, de alguma forma, qual
+  seria a chave utilizada.\par
+
+  Vários são os tipos e implementações modernas de algorítimos
+  criptográficos. Para o escopo deste trabalho, devemos nos ater aos 
+  de chave assimétrica, mais precisamente no algorítimo RSA,
+  utilizado no certificado digital.\par
+
+  Este algorítimo surgiu em 1977, e utiliza o princípio de chaves
+  públicas e privadas. Para enviar uma mensagem criptografada
+  para o indivíduo \emph{A}, o indivíduo \emph{B} utilizará a
+  chave pública de \emph{A}. Esta chave, como o nome esclarece, é
+  de conhecimento amplo, e pode ser livremente divulgada. Para
+  ler a mensagem, no entanto, não se utilizará a mesma chave que
+  criptografou o texto, mas uma diferente, denominada chave
+  privada. Somente \emph{A}, possuidor da chave privada
+  correspondente à chave pública utilizada por \emph{B} poderá
+  ler o texto \cite[p. 443]{SistemasOperacionaisModernos}. Esse
+  método criptográfico de nada valeria para confirmar a
+  identidade do autor de um documento se não fosse por uma
+  característica do algorítimo RSA: o contrário também é
+  verdadeiro. Um documento criptografado pela chave
+  \emph{privada} de \emph{A}, conhecida apenas por este, só
+  poderá ser descriptografado pela chave pública correspondente.
+  Ou seja, se um determinado documento for legível após o uso da
+  chave pública de \emph{A}, então é certo que foi criptografado
+  por ele.\par
+
+  O certificado digital e, paralelamente, a assinatura digital,
+  utilizam conceito similar ao exposto. Como a chave pública de
+  um indivíduo não tem restrições de divulgação, posto que não é
+  possível descriptografar os documentos com ela criptografados,
+  foram montadas estruturas para armazenar várias dessas chaves
+  públicas em um único local, associando-as a determinadas
+  pessoas. Um indivíduo poderia se cadastrar na empresa
+  mantenedora dessa estrutura e armazenar lá a sua chave pública.
+  Dessa forma, torna-se extremamente prático enviar arquivos
+  criptografados para qualquer pessoa cadastrada em uma dessas
+  empresas, que são chamadas de Autoridades Certificadoras. Ao
+  efetuar esse cadastro junto às autoridades certificadoras, o
+  indivíduo recebe um certificado digital, que contém sua chave
+  privada, de conhecimento unicamente seu. A chave pública, em
+  contra-partida, fica armazenada nos servidores da Autoridade
+  Certificadora \cite[p. 16]{SegredoDemocracia}.
+
+  Já a assinatura digital decorre de uma consequência indesejável
+  da complexidade do algorítimo RSA: baixa velocidade
+  \cite{ComputerNetworks}. A solução encontrada foi, ao invés de
+  criptografar o documento por inteiro, utilizar-se de uma função
+  de hash \textbf{(EXPLICAR HASH)}, que gera uma espécie de
+  resumo criptográfico do arquivo. Apenas este resumo seria
+  criptografado com a chave privada do remetente, garantindo
+  assim velocidade no procedimento de assinatura do documento e
+  garantindo um grau de confiabilidade
+  aceitável \cite{ComputerNetworks}. Um documento que tenha
+  passado por esse processo estaria assinado digitalmente pelo
+  autor e não poderia ser alterado sem que fosse notado pelo
+  receptor. Tendo em vista essa propriedade da assinatura
+  digital, em 1996 foi aprovada pela Assembléia Geral da ONU a
+  \emph{Lei Modelo do Comércio
+  Eletrônico}, que estabeleceu requisitos para que o documento
+  digital tenha função equivalente ao escrito
+  \apud{LeiModeloComercioEletronico}{CertificadoDigital}.
+
+	Segundo \citeonline{CertificadoDigital}, o documento digital é
+  uma representação da realidade, seja textual gráfica ou sonora,
+  que, normalmente, é volátil e de fácil alteração e
+  falsificação. No entanto, através de mecanismos informáticos,
+  como a já expicada certificação digital, é possível que
+  adquiram as três características fundamentais de um documento
+  em papel: a integridade, a autenticidade e a tempestividade, e
+  assim possam servir às três funções dos documentos:
+  identificativa, declaratória e probatória. \par
+	
+	No documento em papel, a integridade é verificada pela
+  existência ou não de contrafação – rasura, escritos
+  posteriores. No documento digital, a assinatura digital é
+  inexoravelmente violada com qualquer mínima alteração no
+  conteúdo do documento \cite{CertificadoDigital}.\par
+	
+	A identificação do autor pode ser realizada através de
+  autoridades certificadoras, como a ICP-BRASIL, instituída pela
+  Medida Provisória 2.200 \cite{MedProv2200}, que armazenam
+  certificados para aferição de autenticidade das assinaturas
+  digitais. \par
+	
+	Defendem \citeonline{CertificadoDigital} que a validade do
+  documento eletrônico em si, apenas por ser eletrônico, não deve
+  ser questionada.  Afinal, se a lei permite a existência de
+  contratos verbais, por exemplo, não há porque negar validade
+  aos contratos eletrônicos. Ainda segundo os autores, a
+  volatilidade característica do meio eletrônico, que faz algumas
+  pessoas manterem receio quanto a esses documentos é sanada pelo
+  certificado digital. Justificam ainda o uso do documento
+  eletrônico como meio de prova com fundamento no art. 322 do
+  CPC, que determina serem todos os meios legais e moralmente
+  legítimos hábeis para provar a verdade dos fatos. O documento
+  digital só não poderia ser utilizado como prova para os casos
+  em que a lei impõe determinada forma ao negócio jurídico que
+  não é suportada pelos meios eletrônicos. \par
+	
+	Concluem \citeonline{CertificadoDigital} que a falta de
+  regulamentação e de atribuição de validade jurídica aos
+  documentos digitais representavam empecilhos ao desenvolvimento
+  do comércio eletrônico. O entendimento mais correto é o de dar
+  validade aos documentos digitais, apesar da relutância de
+  alguns autores em admiti-lo, pois com a assinatura digital, o
+  criador do documento tem a certeza de que o documento não
+  será alterado sem o seu consentimento, assim como o
+  destinatário poderá confiar na procedência e integridade da
+  mensagem, assim como pode saber que foi enviado exatamente na
+  hora indicada. \par
+
+	
+	Em relação à divulgação de atos do Poder Público via Internet,
+  importante para o trabalho em virtude da existência de Diários
+  da Justiça Eletrônicos e Intimações virtuais,
+  \citeonline{PublicidadeINPI} discute-a em face do princípio da
+  Publicidade Administrativa.  Segundo seu entendimento, a
+  substituição feita pelo INPI – Instituto Nacional da
+  Propriedade Intelectual – de sua revista impressa pela versão
+  eletrônica fere o citado princípio por várias razões. Alega o
+  autor que a Constituição Federal, ao instituir o princípio da
+  Publicidade em seu art. 37 caput, determinou aos agentes
+  públicos a adoção, de forma progressiva, dos comportamentos
+  necessários à disseminação de seus atos tendente a atingir o
+  maior grau possível de difusão e conhecimento por parte da
+  população. \par
+	
+	Vedar a publicação impressa teria, portanto, afrontado esse
+  mandado constitucional, convertendo-o, de um mandado de
+  otimização, para, segundo \citeonline{PublicidadeINPI}, um
+  mandado de pessimização, por restringir o alcance da publicação
+  anteriormente existente.  Ainda segundo o entendimento do
+  autor, com o péssimo grau de inclusão digital existente em
+  nosso país, onde 79\% dos habitantes nunca manuseou um
+  computador e 89\% nunca acessou a internet
+  \apud{PesquisaInclusaoDigital}{PublicidadeINPI}, a supressão da
+  da edição impressa da revista em nada contribui para a
+  publicidade dos atos administrativos que passam a ser
+  disponíveis apenas em forma eletrônica. \par
+	
+	
+	Em seu artigo “A Informatização do Processo Judicial – da 'Lei
+  do Fax' à Lei nº 11.419/2006: uma Breve Retrospectiva
+  Legislativa”, o Dr. Demócrito Reinaldo Filho mostra a
+  evolução do tratamento legislativo dado ao procedimento
+  judicial virtual. Comentando a Lei 11.419/06, afirma que
+  esta contemplou avanços tecnológicos recentes, englobando o
+  Diário de Justiça online, a citação e intimação eletrônica,
+  certificação digital, além de algumas alterações no CPC
+  para acomodar as novas modificações.\par
+	
+	Segundo o autor, o debate acerca da idéia de um processo
+  judicial completamente virtual teve início com um texto
+  apresentado pela Ajufe à Comissão de Participação Legislativa
+  da Câmara, em 2001. Este texto adotou o princípio da validade
+  de todos os atos necessários à virtualização do processo: envio
+  e recebimento de petições, armazenamento das peças, coleta de
+  depoimentos e comunicação dos atos processuais.\par
+	
+	Afirma Reinaldo Filho que o primeiro passo na direção da
+  virtualização foi dado pela Lei 9.800/99, que autorizou o uso
+  de sistemas de transmissão de dados para a prática de atos
+  processuais, incluindo-se aí o meio eletrônico. A Lei, no
+  entanto, permitia apenas o trânsito eletrônico das peças
+  processuais, devendo o seu armazenamento continuar a ser
+  realizado em meio físico. A própria Lei não dispensou as partes
+  de entregar os originais, além de autorizar apenas a
+  transmissão de petições por meio eletrônico, não permitindo
+  outros atos processuais, como audiências e sentenças.\par
+	
+	Em seguida, a Lei 10.259/01 disciplinou os Juizados Federais, e
+  trouxe algumas inovações, como a autorização a recepção de
+  peças processuais por meio eletrônico sem a exigência de
+  posterior apresentação do original, ou a realização de sessões
+  da Turma de Uniformização Jurisprudencial por videoconferência
+  quando residentes em cidades diferentes. \par
+	
+	As implementações iniciais do sistema receberam críticas por
+  não garantir a identidade dos usuários. Sem a inscrição
+  presencial no sistema, qualquer um poderia se inscrever através
+  do site alegando ser outra pessoa. Além dos Juizados Federais,
+  os sistemas dos demais tribunais também não tinham
+  implantado métodos de controle da identidade real do
+  remetente.\par
+	
+	Em agosto de 2006, a Lei 11.341/06 permitiu aos recorrentes, em
+  recurso especial ou extraordinário fundado em divergência
+  jurisprudencial comprovar o dissídio com os julgados
+  reproduzidos na Internet. No mesmo ano, a Lei 11.382/06 criou a
+  penhora online, e o leilão online. \par
+	
+	Por fim, a Lei 11.419/06, marco inicial do processo legislativo
+  de regulamentação do procedimento judicial eletrônico
+  propriamente dito, admite o processo virtual em qualquer
+  jurisdição e órgão. \par
