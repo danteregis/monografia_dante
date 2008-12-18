@@ -4,7 +4,7 @@
 *.bbl
 *.dvi
 *.ps
-*.pdf
+projeto/*.pdf
 *.toc
 *.lot
 *.lof
