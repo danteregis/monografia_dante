@@ -14,3 +14,6 @@ projeto/*.pdf
 *.kilepr
 *.backup
 *.swp
+.DS_Store
+*.tmproj
+*.synctex.gz
